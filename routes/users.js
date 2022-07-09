@@ -1,6 +1,6 @@
 import express from 'express';
 import {v4 as uuidv4} from 'uuid'
-
+import {createUser} from '../controllers/users.js'
 
 
 const router=express.Router();
@@ -25,22 +25,10 @@ router.get('/',(req,res) => {
     res.send(users)
 })
 
-router.post('/',(req,res) => {
-    console.log(`Post Route reached`);
-
-    console.log(req.body);
-
-    const user=req.body;
-
-    // const userId=uuidv4()
-
-    // const userWithId={...user , id:userId}
 
 
-    users.push({...user,id:uuidv4()})
+router.post('/',createUser)
 
-    res.send(`user with name ${user.firstName} added to the database`)
-})
 
 //  /users/2   here 2 is id we can get that id by --> req.params {id: 2}
 
