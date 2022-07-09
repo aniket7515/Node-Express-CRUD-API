@@ -42,8 +42,16 @@ router.post('/',(req,res) => {
     res.send(`user with name ${user.firstName} added to the database`)
 })
 
+//  /users/2   here 2 is id we can get that id by --> req.params {id: 2}
+
+router.get('/:id',(req, res) => {
+    console.log(req.params);
+    res.send(req.params)
+})
 
 export default router;
 
 
 // for unique id we will use npm package uuid which will always create a new id so that noneof our user willl hava same id
+
+//34:30
