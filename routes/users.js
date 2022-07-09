@@ -45,8 +45,13 @@ router.post('/',(req,res) => {
 //  /users/2   here 2 is id we can get that id by --> req.params {id: 2}
 
 router.get('/:id',(req, res) => {
+
+    const { id } = req.params;
+
+    const foundUser= users.find((user)=> user.id===id);
+
     console.log(req.params);
-    res.send(req.params)
+    res.send(foundUser)
 })
 
 export default router;
