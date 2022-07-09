@@ -5,7 +5,7 @@ import {v4 as uuidv4} from 'uuid'
 
 const router=express.Router();
 
-const users=[
+let users=[
     // {
     //     "firstName":"Aniket",
     //     "lastName":"Dhokane",
@@ -53,6 +53,25 @@ router.get('/:id',(req, res) => {
     console.log(req.params);
     res.send(foundUser)
 })
+
+// for deleting the user we will  require id  and we will remove it from users array by using filter function
+
+router.delete('/:id',(req,res)=>{
+    const { id }=req.params;
+
+    // id to delete 123
+    // josh 123
+    // jane 321
+
+
+    users=users.filter((user)=> user.id !==id)
+
+    res.send(`user with the id ${id} deleted from the database`)
+})
+
+
+
+
 
 export default router;
 
