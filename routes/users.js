@@ -70,7 +70,26 @@ router.delete('/:id',(req,res)=>{
 })
 
 
+// updateing the user information we will use Patch method
 
+router.patch('/:id',(req,res)=>{
+    const { id } = req.params;
+    // what  user can update
+    const {firstName, lastName,age } = req.body;
+    const user= users.find((user)=> user.id === id)
+
+    if(firstName){
+        user.firstName=firstName;
+    }
+    if(lastName){
+        user.lastName=lastName;
+    }
+    if(age){
+        user.age=age;
+    }
+
+    res.send(` user woth the id ${id} has been updated`)
+})
 
 
 export default router;
